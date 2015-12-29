@@ -4,7 +4,7 @@ from smtplib import SMTPException
 request = urllib2.urlopen("http://checkip.dyndns.org").read()
 ip = re.findall(r"\d{1,3}\.\d{1,3}\.\d{1,3}.\d{1,3}", request)
 
-parameters = csv.reader(open('checkip.csv','rb'), delimiter=',')
+parameters = csv.reader(open('/home/pi/Scripts/checkip.csv','rb'), delimiter=',')
 parameters = next(parameters)
 
 if ip[0] != parameters[2]:
@@ -26,7 +26,7 @@ ip has changed to %s
 		session.sendmail(parameters[0], [parameters[0]], message)
 		session.quit()
 		
-		writer = csv.writer(open('checkip.csv', 'w'))
+		writer = csv.writer(open('/home/pi/Scripts/checkip.csv', 'w'))
 		writer.writerows([parameters])
 		print "Successfully sent email"
 	except SMTPException:
