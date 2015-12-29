@@ -1,3 +1,5 @@
+#!/user/bin/python
+
 import smtplib, os, urllib2, csv, sys, re
 from smtplib import SMTPException
 
